@@ -1,0 +1,41 @@
+/* styles.css */
+
+.movie-details-container {
+  padding: 20px;
+  background-color: #303030;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-details-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.movie-details-container p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.movie-details-container img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.movie-details-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-details-container ul li {
+  margin-bottom: 5px;
+}
+
+.movie-details-container ul li strong {
+  font-weight: bold;
+}
