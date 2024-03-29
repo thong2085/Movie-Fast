@@ -1,0 +1,47 @@
+Header {
+  display: flex;
+  background-color: #303030 !important;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px !important;
+  padding-top: 16px !important;
+  height: 80px !important;
+  border-bottom: 1px solid gray;
+}
+.Menu-header {
+  background-color: #303030;
+}
+.Menu-item {
+  padding: 0 10px;
+  cursor: pointer;
+}
+.Menu-item:hover,
+.Menu-item:active,
+.Menu-item:target,
+.Menu-item:focus-within {
+  color: #f28f1a !important;
+  background-color: transparent !important ;
+}
+
+.logo {
+  margin-right: 25px;
+}
+.search-form {
+  display: flex;
+  gap: 10px;
+  background-color: #494949;
+  width: 70%;
+  padding: 10px 20px;
+  height: 40px;
+  border-radius: 5px;
+}
+.search-form .search-input {
+  height: 20px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+.icon-search {
+  color: #fff;
+}
