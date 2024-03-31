@@ -23,30 +23,7 @@ function WatchMovie() {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div>
-      <h2>{movieDetails.title}</h2>
-      <p>{movieDetails.description}</p>
-      <p>Director: {movieDetails.director}</p>
-      <p>
-        Cast:
-        {movieDetails.cast &&
-          movieDetails.cast.map((actor) => actor.name).join(", ")}
-      </p>
-      <p>Release Date: {movieDetails.releaseDate}</p>
-      <p>Rating: {movieDetails.rating}</p>
-      <iframe
-        width="100%"
-        height="700"
-        src={`https://www.youtube.com/embed/Y0ZsLudtfjI`}
-        title={movieDetails.title}
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default WatchMovie;
