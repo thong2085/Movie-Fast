@@ -12,7 +12,6 @@ const HomePage = () => {
         <PlayingMovies />
         <PopularRetailMovies />
         <PopularTVShows />
-        {/* <RecommendedMovies /> */}
       </article>
     </div>
   );
