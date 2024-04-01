@@ -202,7 +202,7 @@ const addLikedMovie = asyncHandler(async (req, res) => {
     if (user) {
       // check if movie already liked
       // if movie already liked send error message
-      if (user.isMovieLiked.includes(movieId)) {
+      if (user.likedMovies.includes(movieId)) {
         res.status(401);
         throw new Error("Movie already liked");
       }
@@ -232,7 +232,7 @@ const deleteLikedMovies = asyncHandler(async (req, res) => {
     if (user) {
       user.likedMovies = [];
       await user.save();
-      res.json({ message: "All liked movies deleted successfully" });
+      res.json({ message: "Your favourites movies deleted successfully" });
     }
     // else send error message
     else {
