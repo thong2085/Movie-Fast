@@ -1,34 +1,23 @@
 import express from "express";
-import {
-  addLikedMovie,
-  changeUserPassword,
-  deleteLikedMovies,
-  deleteUser,
-  deleteUserProfile,
-  getLikedMovies,
-  getUsers,
-  loginUser,
-  registerUser,
-  updateUserProfile,
-} from "../controllers/UserController.js";
+import * as userController from "../controllers/UserController.js";
 import { admin, protect } from "../middlewares/Auth.js";
 
 const router = express.Router();
 
 // ********* PUBLIC ROUTES ****************
-router.post("/", registerUser);
-router.post("/login", loginUser);
+router.post("/", userController.registerUser);
+router.post("/login", userController.loginUser);
 
 // ********* PRIVATE ROUTES ****************
-router.put("/", protect, updateUserProfile);
-router.delete("/", protect, deleteUserProfile);
-router.put("/password", protect, changeUserPassword);
-router.get("/favourites", protect, getLikedMovies);
-router.post("/favourites", protect, addLikedMovie);
-router.delete("/favourites", protect, deleteLikedMovies);
+router.put("/", protect, userController.updateUserProfile);
+router.delete("/", protect, userController.deleteUserProfile);
+router.put("/password", protect, userController.changeUserPassword);
+router.get("/favourites", protect, userController.getLikedMovies);
+router.post("/favourites", protect, userController.addLikedMovie);
+router.delete("/favourites", protect, userController.deleteLikedMovies);
 
 // ********* ADMIN ROUTES ****************
 
-router.get("/", protect, admin, getUsers);
-router.delete("/:id", protect, admin, deleteUser);
+router.get("/", protect, admin, userController.getUsers);
+router.delete("/:id", protect, admin, userController.deleteUser);
 export default router;
