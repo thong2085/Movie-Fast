@@ -29,7 +29,7 @@ const TopRated = () => {
         >
           {Movies.map((movie, index) => (
             <SwiperSlide key={index}>
-              <div className="p-4 hovered w-full h-rate boder-border bg-dry rounded-lg overflow-hidden">
+              <div className="hovered w-full h-rate boder-border bg-dry rounded-lg overflow-hidden">
                 <img
                   src={`/images/movies/${movie.titleImage}`}
                   alt={movie.name}

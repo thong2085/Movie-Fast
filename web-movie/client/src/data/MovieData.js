@@ -117,7 +117,7 @@ export const Movies = [
     year: 2023,
     time: 160,
     video: "https://www.youtube.com/watch?v=02DCIgIu-Bg",
-    rate: 4.5, // Chưa có đánh giá
+    rate: 4.5,
   },
   {
     name: "Jurassic World: Dominion",
@@ -129,7 +129,7 @@ export const Movies = [
     year: 2023,
     time: 160,
     video: "https://www.youtube.com/watch?v=HQTQeUt3bKU",
-    rate: 4, // Chưa có đánh giá
+    rate: 4,
   },
   {
     name: "Guardians of the Galaxy Vol. 3",
@@ -141,19 +141,19 @@ export const Movies = [
     year: 2023,
     time: 150,
     video: "https://www.youtube.com/watch?v=81hLOIwFrMM",
-    rate: 3, // Chưa có đánh giá
+    rate: 3,
   },
   {
     name: "Spider-Man: No Way Home 2",
     desc: "Plot unknown. Sequel to the 2021 film 'Spider-Man: No Way Home'.",
-    titleImage: "13.jpg",
+    titleImage: "13a.jpg",
     image: "13.jpg",
     category: ["Action", "Adventure", "Sci-Fi"],
     language: "English",
     year: 2023,
     time: 150,
     video: "https://www.youtube.com/watch?v=s_tZUe75FfI",
-    rate: 4, // Chưa có đánh giá
+    rate: 4,
   },
   {
     name: "The Flash",
@@ -165,31 +165,31 @@ export const Movies = [
     year: 2023,
     time: 150,
     video: "https://www.youtube.com/watch?v=fFbGlQ87UUc",
-    rate: 3.5, // Chưa có đánh giá
+    rate: 3.5,
   },
   {
     name: "Black Panther: Wakanda Forever",
     desc: "Plot unknown. Sequel to the 2018 film 'Black Panther'.",
-    titleImage: "15.jpg",
+    titleImage: "15a.jpg",
     image: "15.jpg",
     category: ["Action", "Adventure", "Fantasy"],
     language: "English",
     year: 2024,
     time: 150,
     video: "https://www.youtube.com/watch?v=OGaKvT4np4E",
-    rate: 5, // Chưa có đánh giá
+    rate: 5,
   },
   {
     name: "Fantastic Beasts: The Secrets of Dumbledore",
     desc: "The third installment of the 'Fantastic Beasts and Where to Find Them' series set in J.K. Rowling's Wizarding World featuring the adventures of magizoologist Newt Scamander.",
-    titleImage: "16.jpg",
+    titleImage: "16a.jpg",
     image: "16.jpg",
     category: ["Adventure", "Family", "Fantasy"],
     language: "English",
     year: 2024,
     time: 140,
     video: "https://www.youtube.com/watch?v=wXxF34XV0jo",
-    rate: 4.5, // Chưa có đánh giá
+    rate: 4.5,
   },
   {
     name: "Mission: Impossible 8",
@@ -201,7 +201,7 @@ export const Movies = [
     year: 2024,
     time: 150,
     video: "https://www.youtube.com/watch?v=T7A810duHvw",
-    rate: 2.5, // Chưa có đánh giá
+    rate: 2.5,
   },
   {
     name: "The Batman",
@@ -213,7 +213,7 @@ export const Movies = [
     year: 2024,
     time: 170,
     video: "https://www.youtube.com/watch?v=Z5nU3-1pmN8",
-    rate: 3, // Chưa có đánh giá
+    rate: 3,
   },
   {
     name: "Indiana Jones 5",
@@ -225,18 +225,72 @@ export const Movies = [
     year: 2024,
     time: 140,
     video: "https://www.youtube.com/watch?v=yndZl68Sgpk",
-    rate: 4, // Chưa có đánh giá
+    rate: 4,
   },
   {
     name: "Doctor Strange in the Multiverse of Madness",
     desc: "After the events of 'Avengers: Endgame', Dr. Stephen Strange continues his research on the Time Stone. But an old friend turned enemy seeks to destroy every sorcerer on Earth, messing with Strange's plan and also causing him to unleash an unspeakable evil.",
-    titleImage: "20.jpg",
+    titleImage: "20a.jpg",
     image: "20.jpg",
     category: ["Action", "Adventure", "Fantasy"],
     language: "English",
     year: 2024,
     time: 160,
     video: "https://www.youtube.com/watch?v=rgxhzn_p_pE",
-    rate: 4.5, // Chưa có đánh giá
+    rate: 4.5,
+  },
+];
+
+export const UsersData = [
+  {
+    name: "Joseph Gordon-Levitt",
+    image: "cast_1.jpeg",
+    message: "Talent is the desire to practice",
+    rate: 4.5,
+  },
+  {
+    name: "Rose",
+    image: "cast_2.jpeg",
+    message: "Be yourself; everyone else is already taken.",
+    rate: 4.0,
+  },
+  {
+    name: "Johnny Depp",
+    image: "cast_3.jpg",
+    message:
+      "Just keep moving forward and don't give a damn about what anybody thinks.",
+    rate: 4.8,
+  },
+  {
+    name: "Leonardo Dicaprio",
+    image: "cast_4.jpg",
+    message: "Every next level of your life will demand a different you.",
+    rate: 4.7,
+  },
+  {
+    name: "Tom Hardy",
+    image: "cast_5.jpg",
+    message: "You mustn't be afraid to dream a little bigger, darling.",
+    rate: 4.2,
+  },
+  {
+    name: "Tom Cruise",
+    image: "cast_6.jpg",
+    message:
+      "I've learned that life is one crushing defeat after another until you just wish Flanders was dead.",
+    rate: 4.4,
+  },
+  {
+    name: "The Rock",
+    image: "cast_7.jpg",
+    message:
+      "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come.",
+    rate: 4.9,
+  },
+  {
+    name: "Angelina Jolie",
+    image: "cast_8.jpg",
+    message: "I've been reckless, but I'm not a rebel without a cause.",
+    rate: 4.6,
   },
 ];

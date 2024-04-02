@@ -16,6 +16,20 @@ select:focus {
   box-shadow: none !important;
 }
 
+/* Tuỳ chỉnh kiểu dáng của thanh trượt */
+::-webkit-scrollbar {
+  width: 10px; /* Chiều rộng của thanh trượt */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  /* Màu nền của thanh trượt */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6cc; /* Màu của thanh cuộn */
+  border-radius: 10px; /* Bo tròn các góc của thanh cuộn */
+}
 /* Basic class for tailwind */
 .linear-bg {
   background: linear-gradient(269.82deg, #07091c00 0.17%, #080a1ad6 99.87%);
