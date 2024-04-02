@@ -9,7 +9,7 @@ const Movie = ({ movie }) => {
           <img
             src={`/images/movies/${movie?.image}`}
             alt={movie.name}
-            className="w-full h-64 object-cover"
+            className="w-full h-72 object-cover"
           />
         </Link>
         <div className="absolute flex-btn gap-2 bottom-0 right-0 left-0 bg-main bg-opacity-60 text-white px4 py-3">
