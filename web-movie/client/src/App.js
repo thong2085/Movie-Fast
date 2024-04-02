@@ -7,6 +7,8 @@ import ContactUs from "./screens/ContactUs";
 import MoviesPage from "./screens/Movies";
 import SingleMovie from "./screens/SingleMovie";
 import WatchPage from "./screens/WatchPage";
+import Login from "./screens/Login";
+import Register from "./screens/Register";
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/movie/:id" element={<SingleMovie />} />
       <Route path="/watch/:id" element={<WatchPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
