@@ -1,9 +1,8 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CategoriesData } from "../data/CategoriesData";
-import { CheckIcon } from "@heroicons/react/solid";
-import { SelectorIcon } from "@heroicons/react/outline";
 import { FiCheck } from "react-icons/fi";
+import { CgSelect } from "react-icons/cg";
 
 const YearData = [
   { title: "Sort By Year" },
@@ -65,7 +64,7 @@ const Filters = () => {
             <Listbox.Button className="relative border-gray-800 w-full text-white bg-main rounded-lg py-4 pl-6 pr-10 text-left text-xs">
               <span className="block truncate">{item.value.title}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <SelectorIcon className="h-5 w-5" aria-hidden="true" />
+                <CgSelect className="h-5 w-5" aria-hidden="true" />
               </span>
             </Listbox.Button>
             <Transition
