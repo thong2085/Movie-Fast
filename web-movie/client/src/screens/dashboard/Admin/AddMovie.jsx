@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Message, Select } from "../../../components/UsedInput";
 import SideBar from "../SideBar";
 import Uploder from "../../../components/Uploder";
@@ -7,10 +7,24 @@ import { UsersData } from "../../../data/MovieData";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { ImUpload } from "react-icons/im";
+import CastsModal from "../../../components/Modals/CastsModal";
 
 const AddMovie = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [cast, setCast] = useState(null);
+
+  useEffect(() => {
+    if (modalIsOpen === false) {
+      setCast();
+    }
+  }, [modalIsOpen]);
   return (
     <SideBar>
+      <CastsModal
+        modalOpen={modalIsOpen}
+        setModalOpen={setModalIsOpen}
+        cast={cast}
+      />
       <div className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-white">Create Movie</h2>
         <div className="w-full grid md:grid-cols-2 gap-6">
@@ -82,7 +96,10 @@ const AddMovie = () => {
         </div>
         {/* CASTS */}
         <div className="w-full grid lg:grid-cols-2 gap-6 items-start">
-          <button className="w-full py-4 bg-main border-2 border-subMain border-dashed text-white rounded">
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className="w-full py-4 bg-main border-2 border-subMain border-dashed text-white rounded"
+          >
             Add Cast
           </button>
           <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grod-cols-4 grid-cols-2 gap-4">
@@ -103,7 +120,13 @@ const AddMovie = () => {
                   <button className=" flex-colo bg-dry  text-subMain ">
                     <MdDelete />
                   </button>
-                  <button className=" flex-colo bg-dry text-green-600">
+                  <button
+                    onClick={() => {
+                      setCast(user);
+                      setModalIsOpen(true);
+                    }}
+                    className=" flex-colo bg-dry text-green-600"
+                  >
                     <FaEdit />
                   </button>
                 </div>
