@@ -47,7 +47,7 @@ select:focus {
   @apply flex flex-row justify-center items-center;
 }
 .flex-btn {
-  @apply flex justify-center items-center;
+  @apply flex justify-between items-center;
 }
 .transitions {
   @apply transition duration-300 ease-in;
