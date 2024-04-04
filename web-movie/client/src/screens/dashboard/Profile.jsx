@@ -25,7 +25,7 @@ const Profile = () => {
           <button className="bg-dryGray text-subMain font-medium transitions hover:bg-subMain border border-subMain hover:text-white py-3 px-6 rounded w-full sm:w-auto">
             Delete Account
           </button>
-          <button className="bg-subMain font-medium transitions hover:bg-main border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto">
+          <button className="hover:border hover:bg-transparent border-subMain flex-colo rounded bg-subMain  font-medium transitions border  text-white py-3 px-6 w-full sm:w-auto">
             Update Profile
           </button>
         </div>

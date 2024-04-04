@@ -243,52 +243,60 @@ export const Movies = [
 
 export const UsersData = [
   {
-    name: "Joseph Gordon-Levitt",
+    fullName: "Joseph Gordon-Levitt",
+    email: "example@example.com",
     image: "cast_1.jpeg",
     message: "Talent is the desire to practice",
     rate: 4.5,
   },
   {
-    name: "Rose",
+    fullName: "Rose",
+    email: "example@example.com",
     image: "cast_2.jpeg",
     message: "Be yourself; everyone else is already taken.",
     rate: 4.0,
   },
   {
-    name: "Johnny Depp",
+    fullName: "Johnny Depp",
+    email: "example@example.com",
     image: "cast_3.jpg",
     message:
       "Just keep moving forward and don't give a damn about what anybody thinks.",
     rate: 4.8,
   },
   {
-    name: "Leonardo Dicaprio",
+    fullName: "Leonardo Dicaprio",
+    email: "example@example.com",
     image: "cast_4.jpg",
     message: "Every next level of your life will demand a different you.",
     rate: 4.7,
   },
   {
-    name: "Tom Hardy",
+    fullName: "Tom Hardy",
+    email: "example@example.com",
     image: "cast_5.jpg",
     message: "You mustn't be afraid to dream a little bigger, darling.",
     rate: 4.2,
   },
   {
-    name: "Tom Cruise",
+    fullName: "Tom Cruise",
+    email: "example@example.com",
     image: "cast_6.jpg",
     message:
       "I've learned that life is one crushing defeat after another until you just wish Flanders was dead.",
     rate: 4.4,
   },
   {
-    name: "The Rock",
+    fullName: "The Rock",
+    email: "example@example.com",
     image: "cast_7.jpg",
     message:
       "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come.",
     rate: 4.9,
   },
   {
-    name: "Angelina Jolie",
+    fullName: "Angelina Jolie",
+    email: "example@example.com",
     image: "cast_8.jpg",
     message: "I've been reckless, but I'm not a rebel without a cause.",
     rate: 4.6,

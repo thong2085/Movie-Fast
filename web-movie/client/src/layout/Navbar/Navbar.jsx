@@ -46,7 +46,7 @@ const Navbar = () => {
             <NavLink to="/login" className={Hover}>
               <CgUser className="w-8 h-8" />
             </NavLink>
-            <NavLink to="/favourites" className={`${Hover} relative`}>
+            <NavLink to="/favorites" className={`${Hover} relative`}>
               <FaHeart className="w-6 h-6" />
               <div className="w-5 h-5 flex-colo rounde-full text-xs bg-subMain text-white absolute -top-5 -right-5">
                 3

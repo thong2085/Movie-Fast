@@ -13,6 +13,10 @@ import Profile from "./screens/dashboard/Profile";
 import Aos from "aos";
 import Password from "./screens/dashboard/Password";
 import FasvoritesMovies from "./screens/dashboard/FasvoritesMovies";
+import MovieList from "./screens/dashboard/Admin/MovieList";
+import Dashboard from "./screens/dashboard/Admin/Dashboard";
+import Categories from "./screens/dashboard/Admin/Categories";
+import Users from "./screens/dashboard/Admin/User";
 
 const App = () => {
   Aos.init();
@@ -29,6 +33,10 @@ const App = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/password" element={<Password />} />
       <Route path="/favorites" element={<FasvoritesMovies />} />
+      <Route path="/movieslist" element={<MovieList />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/categories" element={<Categories />} />
+      <Route path="/users" element={<Users />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
