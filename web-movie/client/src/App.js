@@ -17,6 +17,7 @@ import MovieList from "./screens/dashboard/Admin/MovieList";
 import Dashboard from "./screens/dashboard/Admin/Dashboard";
 import Categories from "./screens/dashboard/Admin/Categories";
 import Users from "./screens/dashboard/Admin/User";
+import AddMovie from "./screens/dashboard/Admin/AddMovie";
 
 const App = () => {
   Aos.init();
@@ -37,6 +38,7 @@ const App = () => {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/users" element={<Users />} />
+      <Route path="/addmovie" element={<AddMovie />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
