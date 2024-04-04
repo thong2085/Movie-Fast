@@ -4,6 +4,7 @@ import Table from "../../../components/Table";
 import { Movies } from "../../../data/MovieData";
 
 const MovieList = () => {
+  const sortedMovies = Movies.sort((a, b) => b.year - a.year);
   return (
     <SideBar>
       <div className="flex flex-col gap-6">
@@ -13,7 +14,7 @@ const MovieList = () => {
             Delete All
           </button>
         </div>
-        <Table data={Movies} admin={true} />
+        <Table data={sortedMovies} admin={true} />
       </div>
     </SideBar>
   );

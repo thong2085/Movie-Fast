@@ -55,3 +55,17 @@ select:focus {
 .zIndex {
   z-index: 1000;
 }
+/* Drawer */
+
+.drawer {
+  overflow: visible;
+}
+.drawer .drawer-content-wrapper {
+  width: 100%;
+}
+.drawer {
+  position: fixed;
+  z-index: 9999;
+  transition: width 0s ease 0.3s, height 0s ease 0.3s,
+    transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
