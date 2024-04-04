@@ -55,7 +55,7 @@ const Footer = () => {
         },
         {
           name: "My Favourites",
-          link: "/favourite",
+          link: "/favorites",
         },
         {
           name: "Profile",
