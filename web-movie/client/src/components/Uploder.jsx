@@ -6,14 +6,16 @@ const Uploder = () => {
   const { getRootProps, getInputProps } = useDropzone({
     multiple: false,
     maxSize: 100000,
-    onDrop: (acceptedFiles) => {
-      alert(acceptedFiles[0].name);
+    onDrop: (acceptedFiles, rejectedFiles, event) => {
+      event.preventDefault();
+      alert(`Accepted file: ${acceptedFiles[0].name}`);
     },
   });
+
   return (
-    <div className="w-ful text-center">
+    <div className="w-full text-center">
       <div
-        {...getRootProps}
+        {...getRootProps()}
         className="px-6 py-8 border-2 border-border border-dashed bg-main rounded-md cursor-pointer"
       >
         <input {...getInputProps()} />
@@ -22,7 +24,7 @@ const Uploder = () => {
         </span>
         <p className="text-sm mt-2">Drag your image here</p>
         <em className="text-xs text-border">
-          (only .jpg and .png files will be accepted)
+          (Only .jpg and .png files will be accepted)
         </em>
       </div>
     </div>
