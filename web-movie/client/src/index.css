@@ -55,17 +55,18 @@ select:focus {
 .zIndex {
   z-index: 1000;
 }
-/* Drawer */
-
-.drawer {
-  overflow: visible;
-}
-.drawer .drawer-content-wrapper {
-  width: 100%;
-}
-.drawer {
+.drawer-container {
   position: fixed;
-  z-index: 9999;
-  transition: width 0s ease 0.3s, height 0s ease 0.3s,
-    transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000; /* Đảm bảo drawer hiển thị trên các phần tử khác */
+}
+@media (max-width: 768px) {
+  .drawer-container {
+    width: 100%; /* Thiết lập chiều rộng để phù hợp với màn hình di động */
+  }
+}
+.rc-drawer-content-wrapper-hidden {
+  display: none !important;
 }
