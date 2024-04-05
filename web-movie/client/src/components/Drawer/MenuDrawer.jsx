@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import { BsCollectionPlay, BsPhone } from "react-icons/bs";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FiFacebook, FiInstagram } from "react-icons/fi";
-import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 
 const MenuDrawer = ({ drawerOpen, toggleDrawer }) => {
   const closeDrawer = () => {
