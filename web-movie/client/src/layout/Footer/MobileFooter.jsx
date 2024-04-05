@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { BsCollectionPlay } from "react-icons/bs";
 import { CgMenuBoxed } from "react-icons/cg";
 import { FiHeart, FiHome, FiUserCheck } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
