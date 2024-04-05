@@ -3,8 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { FaHeart, FaSearch } from "react-icons/fa";
 import { CgUser } from "react-icons/cg";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { userInfo } = useSelector((state) => state.userLogin);
   const hover = "hover:text-subMain transitions";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
   return (
@@ -43,12 +45,36 @@ const Navbar = () => {
             <NavLink to="/contact-us" className={Hover}>
               Contact Us
             </NavLink>
-            <NavLink to="/login" className={Hover}>
-              <CgUser className="w-8 h-8" />
+            <NavLink
+              to={
+                userInfo?.isAdmin
+                  ? "/dashboard"
+                  : userInfo
+                  ? "/profile"
+                  : "/login"
+              }
+              className={`${Hover} relative`}
+            >
+              {userInfo ? (
+                <div>
+                  <img
+                    src={
+                      userInfo?.image
+                        ? userInfo?.image
+                        : "/images/movies/user.jpg"
+                    }
+                    alt={userInfo?.fullName}
+                    className="w-8 h-8 rounded-full border-2 object-cover border-subMain"
+                  />
+                  <div className="w-2 h-2 flex-colo rounded-full text-xs bg-green-600 text-white absolute -bottom-0 -right-0"></div>
+                </div>
+              ) : (
+                <CgUser className="w-8 h-8" />
+              )}
             </NavLink>
             <NavLink to="/favorites" className={`${Hover} relative`}>
               <FaHeart className="w-6 h-6" />
-              <div className="w-5 h-5 flex-colo rounde-full text-xs bg-subMain text-white absolute -top-5 -right-5">
+              <div className="w-5 h-5 flex-colo rounden-full text-xs bg-subMain text-white absolute -top-5 -right-5">
                 3
               </div>
             </NavLink>
