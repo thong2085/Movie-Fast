@@ -1,35 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import Uploder from "../../components/Uploder";
 import { Input } from "../../components/UsedInput";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { InlineError } from "../../components/notfications/Error";
+import * as UserValidation from "../../components/validation/UserValidation";
+import { updateProfileAction } from "../../redux/Actions/userActions";
+import toast from "react-hot-toast";
+import { ImagePreview } from "../../components/ImagePreview";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.userUpdateProfile);
+  const [imageUrl, setImageUrl] = useState(userInfo ? userInfo.image : "");
+  const { isLoading, isError, isSuccess } = useSelector(
+    (state) => state.userUpdateProfile
+  );
+
+  // validate user
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(UserValidation.ProfileValidation),
+  });
+
+  // on submit
+  const onSubmit = (data) => {
+    dispatch(updateProfileAction({ ...data, image: imageUrl }));
+  };
+  // useEffect
+  useEffect(() => {
+    if (userInfo) {
+      setValue("fullName", userInfo?.fullName);
+      setValue("email", userInfo?.email);
+    }
+    if (isSuccess) {
+      dispatch({ type: "USER_UPDATE_PROFILE_RESET" });
+    }
+    if (isError) {
+      toast.error(isError);
+    }
+  }, [userInfo, setValue, isSuccess, isError, dispatch]);
   return (
     <SideBar>
-      <div className="flex flex-col gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-white">Profile</h2>
-        <Uploder />
-        <Input
-          label="FullName"
-          placeholder="Movies Fast"
-          type="text"
-          bg={true}
-        />
-        <Input
-          label="Email"
-          placeholder="moviesfast@gmail.com"
-          type="email"
-          bg={true}
-        />
+        <div className="w-full grid lg:grid-cols-12 gap-6">
+          <div className="col-span-10">
+            <Uploder setImageUrl={setImageUrl} />
+          </div>
+          {/* image preview */}
+          <div className="col-span-2">
+            <ImagePreview
+              image={imageUrl}
+              name={userInfo ? userInfo.fullName : "John Smith"}
+            />
+          </div>
+        </div>
+        <div className="w-full">
+          <Input
+            label="FullName"
+            placeholder="Movies Fast"
+            name="fullName"
+            register={register("fullName")}
+            type="text"
+            bg={true}
+          />
+          {errors.fullName && <InlineError text={errors.fullName.message} />}
+        </div>
+        <div className="w-full">
+          <Input
+            label="Email"
+            placeholder="moviesfast@gmail.com"
+            type="email"
+            name="email"
+            register={register("email")}
+            bg={true}
+          />
+          {errors.email && <InlineError text={errors.email.message} />}
+        </div>
         <div className="flex gap-2 flex-wrap flex-col-reverse sm:flex-row justify-between items-center my-4">
           <button className="bg-dryGray text-subMain font-medium transitions hover:bg-subMain border border-subMain hover:text-white py-3 px-6 rounded w-full sm:w-auto">
             Delete Account
           </button>
           <button className="hover:border hover:bg-transparent border-subMain flex-colo rounded bg-subMain  font-medium transitions border  text-white py-3 px-6 w-full sm:w-auto">
-            Update Profile
+            {isLoading ? "Updating..." : "Update Profile"}
           </button>
         </div>
-      </div>
+      </form>
     </SideBar>
   );
 };

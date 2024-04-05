@@ -34,3 +34,20 @@ export const userRegisterReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// UPDATE PROFILE
+
+export const updateProfileReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userContants.USER_UPDATE_PROFILE_REQUEST:
+      return { isLoading: true };
+    case userContants.USER_UPDATE_PROFILE_SUCCESS:
+      return { isLoading: false, userInfo: action.payload, isSuccess: true };
+    case userContants.USER_UPDATE_PROFILE_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.USER_UPDATE_PROFILE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};

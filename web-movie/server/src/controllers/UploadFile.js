@@ -8,6 +8,9 @@ const Uploadrouter = express.Router();
 
 const upload = multer({
   storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 1024 * 1024 * 100,
+  },
 });
 
 Uploadrouter.post("/", upload.single("file"), async (req, res) => {
@@ -32,7 +35,7 @@ Uploadrouter.post("/", upload.single("file"), async (req, res) => {
       // if success
       blobStream.on("finish", () => {
         // get the public URL
-        const publicUrl = `https://firebasestorage.googleleapis.com/v0/b/${storage.name}/o/${fileName}?alt=media`;
+        const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${storage.name}/o/${fileName}?alt=media`;
         // return the file name and its public URL
         res.status(200).json(publicUrl);
       });
