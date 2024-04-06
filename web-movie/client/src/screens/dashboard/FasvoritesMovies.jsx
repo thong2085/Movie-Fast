@@ -10,7 +10,7 @@ const FasvoritesMovies = () => {
       <div className="flex flex-col gap-6">
         <div className="flex-btn gap-2">
           <h2 className="text-xl font-bold text-white">Favorites Movies</h2>
-          <button className="bg-main font-medium transitions hover:bg-subMain border border-subMain tex-white py-3 px-6 rounded">
+          <button className="bg-subMain  text-medium font-medium transitions hover:bg-main border-2 border-subMain text-white py-3 px-6 rounded w-full sm:w-auto">
             Delete All
           </button>
         </div>

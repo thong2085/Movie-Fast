@@ -112,7 +112,7 @@ const Profile = () => {
           </button>
           <button
             disabled={deleteLoading || isLoading}
-            className="hover:border hover:bg-transparent border-subMain flex-colo rounded bg-subMain  font-medium transitions border  text-white py-3 px-6 w-full sm:w-auto"
+            className="bg-subMain  text-medium font-medium transitions hover:bg-main border-2 border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
           >
             {isLoading ? "Updating..." : "Update Profile"}
           </button>
