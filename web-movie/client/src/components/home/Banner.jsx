@@ -35,12 +35,12 @@ const Banner = () => {
               <div className="flex gap-4 items-center tex-dryGary">
                 <Link
                   to={`/movie/${movie.name}`}
-                  className="bg-subMain hover:text-main transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs"
+                  className="bg-subMain hover:bg-transparent transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs hover:border-2 hover:border-subMain"
                 >
                   Watch
                 </Link>
-                <button className="bg-slate-50 hover:text-subMain transitions text-white px-4 py-3 rounded text-sm  bg-opacity-30">
-                  <AiFillHeart />
+                <button className="bg-dry  transitions text-white px-4 py-3 rounded text-sm  bg-opacity-30">
+                  <AiFillHeart className="hover:text-subMain w-4 h-4" />
                 </button>
               </div>
             </div>

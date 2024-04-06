@@ -21,6 +21,10 @@ import AddMovie from "./screens/dashboard/Admin/AddMovie";
 import ScrollOnTop from "./ScrollOnTop";
 import DrawerContext from "./context/DrawerContext";
 import ToastContainer from "./components/notfications/ToastContainer";
+import {
+  AdminProtectedRouter,
+  ProtectedRouter,
+} from "./routes/ProtectedRouter";
 
 const App = () => {
   Aos.init();
@@ -30,6 +34,7 @@ const App = () => {
       <DrawerContext>
         <ScrollOnTop>
           <Routes>
+            {/* ************** PUBLIC ROUTERS ************* */}
             <Route path="/" element={<HomeScreen />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/about-us" element={<AboutUs />} />
@@ -38,16 +43,23 @@ const App = () => {
             <Route path="/watch/:id" element={<WatchPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/password" element={<Password />} />
-            <Route path="/favorites" element={<FasvoritesMovies />} />
-            <Route path="/movieslist" element={<MovieList />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/addmovie" element={<AddMovie />} />
-
             <Route path="*" element={<NotFound />} />
+
+            {/* *************** PRIVATE PUBLIC ROUTERS ************* */}
+            <Route element={<ProtectedRouter />}>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/password" element={<Password />} />
+              <Route path="/favorites" element={<FasvoritesMovies />} />
+            </Route>
+
+            {/* *************** ADMIN ROUTERS ************* */}
+            <Route element={<AdminProtectedRouter />}>
+              <Route path="/movieslist" element={<MovieList />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/addmovie" element={<AddMovie />} />
+            </Route>
           </Routes>
         </ScrollOnTop>
       </DrawerContext>
