@@ -30,7 +30,7 @@ const Categories = () => {
           <h2 className="text-xl font-bold text-white">Categories</h2>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-subMain flex-rows gap-3 font-medium transitions hover:bg-main border border-subMain tex-white py-2 px-4 rounded"
+            className="bg-subMain flex-btn gap-3 text-medium font-medium transitions hover:bg-main border-2 border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
           >
             <HiPlusCircle /> Create
           </button>

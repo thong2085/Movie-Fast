@@ -135,7 +135,7 @@ const AddMovie = () => {
           </div>
         </div>
         {/* SUBMIT */}
-        <button className="bg-subMain flex-rows gap-4  font-bold text-xl transitions hover:bg-dry border border-subMain text-white py-4 rounded w-full">
+        <button className="bg-subMain  text-xl font-bold flex-rows gap-3 transitions hover:bg-main border-2 border-subMain text-white py-3 px-6 rounded w-full sm:w-auto">
           <ImUpload /> Publish Movie
         </button>
       </div>
