@@ -124,7 +124,35 @@ export const deleteFavoriteMoviesReducer = (state = {}, action) => {
 };
 
 // GET ALL USERS
-export const getAllUsersReducer = (state, action) => {};
+export const getAllUsersReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case userContants.GET_ALL_USERS_REQUEST:
+      return { isLoading: true };
+    case userContants.GET_ALL_USERS_SUCCESS:
+      return { isLoading: false, users: action.payload };
+    case userContants.GET_ALL_USERS_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.GET_ALL_USERS_RESET:
+      return {
+        users: [],
+      };
+    default:
+      return state;
+  }
+};
 
 // DELETE USERS
-export const deleteUsersReducer = (state, action) => {};
+export const deleteUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userContants.DELETE_USER_REQUEST:
+      return { isLoading: true };
+    case userContants.DELETE_USER_SUCCESS:
+      return { isLoading: false, isSuccess: true };
+    case userContants.DELETE_USER_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.DELETE_USER_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
