@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 
 const Banner = () => {
+  const sortedMovies = Movies.sort((a, b) => b.year - a.year);
+
   return (
     <div className="relative w-full">
       <Swiper
@@ -18,7 +20,7 @@ const Banner = () => {
         modules={[Autoplay]}
         autoplay={{ delay: 4000, disableOnInteractionChange: false }}
       >
-        {Movies.slice(0, 6).map((movie, index) => (
+        {sortedMovies.slice(0, 6).map((movie, index) => (
           <SwiperSlide key={index} className="relative rounded overflow-hidden">
             <img
               src={`/images/movies/${movie.image}`}
@@ -35,7 +37,7 @@ const Banner = () => {
               <div className="flex gap-4 items-center tex-dryGary">
                 <Link
                   to={`/movie/${movie.name}`}
-                  className="bg-subMain hover:bg-transparent transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs hover:border-2 hover:border-subMain"
+                  className="bg-subMain hover:bg-transparent border-2 transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs hover:border-2 hover:border-subMain"
                 >
                   Watch
                 </Link>

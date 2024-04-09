@@ -12,7 +12,7 @@ const WatchPage = () => {
   return (
     <Layout>
       <div className="container mx-auto bg-dry p-6 mb-12">
-        <div className="flex justify-between flex-wrap py-3 px-3 mb-6 gap-2 bg-main rounded border border-gray-800 ">
+        <div className="flex justify-between flex-wrap py-3 px-3 mb-6 gap-2 bg-main rounded border-2 border-gray-800 ">
           <Link
             to={`/movie/${movie?.name}`}
             className="md:text-xl text-sm flex gap-3 items-center font-bold text-dryGray"
