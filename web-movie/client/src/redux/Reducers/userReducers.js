@@ -86,6 +86,13 @@ export const changePasswordReducer = (state = {}, action) => {
   }
 };
 
+<<<<<<< HEAD
+// GET ALL USERS
+export const getAllUsersReducer = (state, action) => {};
+
+// DELETE USERS
+export const deleteUsersReducer = (state, action) => {};
+=======
 // GET FAVORITE MOVIES
 export const getFavoriteMoviesReducer = (
   state = {
@@ -122,3 +129,4 @@ export const deleteFavoriteMoviesReducer = (state = {}, action) => {
       return state;
   }
 };
+>>>>>>> b225feb9212ebe4e67f62fa493061334d778ca51
