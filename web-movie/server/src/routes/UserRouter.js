@@ -12,9 +12,9 @@ router.post("/login", userController.loginUser);
 router.put("/", protect, userController.updateUserProfile);
 router.delete("/", protect, userController.deleteUserProfile);
 router.put("/password", protect, userController.changeUserPassword);
-router.get("/favourites", protect, userController.getLikedMovies);
-router.post("/favourites", protect, userController.addLikedMovie);
-router.delete("/favourites", protect, userController.deleteLikedMovies);
+router.get("/favorites", protect, userController.getLikedMovies);
+router.post("/favorites", protect, userController.addLikedMovie);
+router.delete("/favorites", protect, userController.deleteLikedMovies);
 
 // ********* ADMIN ROUTES ****************
 

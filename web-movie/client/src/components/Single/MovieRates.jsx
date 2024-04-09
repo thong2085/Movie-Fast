@@ -73,12 +73,12 @@ const MovieRates = ({ movie }) => {
                 <div className="col-span-2 bg-main hidden md:block">
                   <img
                     src={`/images/movies/${user ? user?.image : "user.jpg"}`}
-                    alt={user?.name}
+                    alt={user?.fullName}
                     className="w-full h-24 rounded-lg object-cover"
                   />
                 </div>
                 <div className="col-span-7 flex flex-col gap-2">
-                  <h2>{user?.name}</h2>
+                  <h2>{user?.fullName}</h2>
                   <p className="text-xs leading-6 font-medium text-text">
                     {user?.message}
                   </p>
