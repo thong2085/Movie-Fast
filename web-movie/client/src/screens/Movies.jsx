@@ -6,6 +6,7 @@ import Movie from "../components/Movie";
 import { CgSpinner } from "react-icons/cg";
 
 const MoviesPage = () => {
+  const sortedMovies = Movies.sort((a, b) => b.year - a.year);
   const maxPage = 10;
   const [page, setPage] = useState(maxPage);
   const HandleLoadingMore = () => {
@@ -20,7 +21,7 @@ const MoviesPage = () => {
           Movies Found
         </p>
         <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols3 sm:grid-cols-2 gap-6">
-          {Movies.slice(0, page)?.map((movie, index) => (
+          {sortedMovies.slice(0, page)?.map((movie, index) => (
             <Movie key={index} movie={movie} />
           ))}
         </div>
