@@ -43,10 +43,10 @@ const MovieCasts = () => {
               <div className="w-full p-3 italic text-xs text-text rounded flex-colo bg-dry ">
                 <img
                   src={`/images/movies/${user?.image}`}
-                  alt={user?.name}
+                  alt={user?.fullName}
                   className="w-full h-64 object-cover rounded mb-4"
                 />
-                <p>{user?.name}</p>
+                <p>{user?.fullName}</p>
               </div>
             </SwiperSlide>
           ))}
