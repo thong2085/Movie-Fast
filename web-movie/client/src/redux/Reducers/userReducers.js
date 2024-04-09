@@ -86,8 +86,47 @@ export const changePasswordReducer = (state = {}, action) => {
   }
 };
 
+<<<<<<< HEAD
 // GET ALL USERS
 export const getAllUsersReducer = (state, action) => {};
 
 // DELETE USERS
 export const deleteUsersReducer = (state, action) => {};
+=======
+// GET FAVORITE MOVIES
+export const getFavoriteMoviesReducer = (
+  state = {
+    likedMovies: [],
+  },
+  action
+) => {
+  switch (action.type) {
+    case userContants.GET_FAVORITE_MOVIES_REQUEST:
+      return { isLoading: true };
+    case userContants.GET_FAVORITE_MOVIES_SUCCESS:
+      return { isLoading: false, likedMovies: action.payload };
+    case userContants.GET_FAVORITE_MOVIES_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.GET_FAVORITE_MOVIES_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+// DELETE FAVORITE MOVIES
+export const deleteFavoriteMoviesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userContants.DELETE_FAVORITE_MOVIES_REQUEST:
+      return { isLoading: true };
+    case userContants.DELETE_FAVORITE_MOVIES_SUCCESS:
+      return { isLoading: false, isSuccess: true };
+    case userContants.DELETE_FAVORITE_MOVIES_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.DELETE_FAVORITE_MOVIES_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+>>>>>>> b225feb9212ebe4e67f62fa493061334d778ca51
