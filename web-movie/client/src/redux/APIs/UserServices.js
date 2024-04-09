@@ -54,6 +54,22 @@ const changePasswordService = async (passwords, token) => {
   return data;
 };
 
+// admin get all users
+const getAllUsersService = async (token) => {
+  const { data } = await Axios.get("/users", {
+    headers: { Authorization: `Bearer ${token} ` },
+  });
+  return data;
+};
+
+// admin delete user
+const deleteUserService = async (id, token) => {
+  const { data } = await Axios.delete(`/users/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+
 export {
   registerService,
   logoutService,
@@ -61,4 +77,6 @@ export {
   updateProfileService,
   deleteProfileService,
   changePasswordService,
+  getAllUsersService,
+  deleteUserService,
 };

@@ -85,3 +85,9 @@ export const changePasswordReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// GET ALL USERS
+export const getAllUsersReducer = (state, action) => {};
+
+// DELETE USERS
+export const deleteUsersReducer = (state, action) => {};
