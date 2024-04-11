@@ -3,6 +3,7 @@ import FlexMovieItems from "../FlexMovieItem";
 import { FaPlay, FaShare } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Rating from "../Stars";
 
 const MovieInfo = ({ movie, setModalOpen }) => {
   return (
@@ -56,7 +57,7 @@ const MovieInfo = ({ movie, setModalOpen }) => {
                 {/* watch button */}
                 <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
                   <Link
-                    to={`/watch/${movie?.name}`}
+                    to={`/watch/${movie?._id}`}
                     className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-3 w-full sm:py-3"
                   >
                     <FaPlay />
@@ -64,6 +65,9 @@ const MovieInfo = ({ movie, setModalOpen }) => {
                   </Link>
                 </div>
               </div>
+              <p className="flex mb-6 text-lg gap-2 text-star">
+                <Rating value={movie?.rate} />
+              </p>
             </div>
             <div className="col-span-2 md:mt-0 mt-2 flex justify-end">
               <button className="md:w-1/4 w-full relative flex-colo bg-subMain hover:bg-transparent border-2 border-subMain transitions md:h-64 h-20 rounded font-medium ">
