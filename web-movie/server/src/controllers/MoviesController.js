@@ -22,7 +22,7 @@ const getMovies = asyncHandler(async (req, res) => {
     // filter movies by category, time, language, rate, year and search
     const { category, time, language, rate, year, search } = req.query;
     let query = {
-      ...(category && { category: { $in: category.split(",") } }), // Filter movies by many category
+      ...(category && { category }), // Filter movies by many category
       ...(time && { time }),
       ...(language && { language }),
       ...(rate && { rate }),
@@ -32,7 +32,7 @@ const getMovies = asyncHandler(async (req, res) => {
 
     // load more movies functionality
     const page = Number(req.query.pageNumber) || 1; // if pageNumber is not provided in query we set it to 1
-    const limit = 2; // 2 movies per page
+    const limit = 8;
     const skip = (page - 1) * limit; // skip 2 movies per page
 
     // find movies by query, skip and limit

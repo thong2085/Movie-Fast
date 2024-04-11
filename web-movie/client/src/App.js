@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import AboutUs from "./screens/AboutUs";
@@ -25,9 +25,15 @@ import {
   AdminProtectedRouter,
   ProtectedRouter,
 } from "./routes/ProtectedRouter";
+import { useDispatch } from "react-redux";
+import { getAllCategoriesAction } from "./redux/Actions/categoriesAction";
 
 const App = () => {
   Aos.init();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCategoriesAction());
+  }, [dispatch]);
   return (
     <>
       <ToastContainer />
@@ -37,6 +43,7 @@ const App = () => {
             {/* ************** PUBLIC ROUTERS ************* */}
             <Route path="/" element={<HomeScreen />} />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:search" element={<MoviesPage />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/movie/:id" element={<SingleMovie />} />
