@@ -27,12 +27,14 @@ import {
 } from "./routes/ProtectedRouter";
 import { useDispatch } from "react-redux";
 import { getAllCategoriesAction } from "./redux/Actions/categoriesAction";
+import { getAllMoviesAction } from "./redux/Actions/moviesAction";
 
 const App = () => {
   Aos.init();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCategoriesAction());
+    dispatch(getAllMoviesAction({}));
   }, [dispatch]);
   return (
     <>
