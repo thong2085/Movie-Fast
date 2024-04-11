@@ -1,44 +1,42 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CategoriesData } from "../data/CategoriesData";
 import { FiCheck } from "react-icons/fi";
 import { CgSelect } from "react-icons/cg";
+import {
+  LanguageData,
+  RatesData,
+  TimesData,
+  YearData,
+} from "../data/FilterData";
 
-const YearData = [
-  { title: "Sort By Year" },
-  { title: "1700 - 1800" },
-  { title: "1800 - 1900" },
-  { title: "1900 - 2000" },
-  { title: "2000 - 2030" },
-];
-
-const TimesData = [
-  { title: "Sort By Hours" },
-  { title: "1 - 5 Hours" },
-  { title: "5 - 10 Hours" },
-  { title: "10 - 15 Hours" },
-  { title: "15 - 20 Hours" },
-];
-
-const RatesData = [
-  { title: "Sort By Rates" },
-  { title: "1 Start" },
-  { title: "2 Start" },
-  { title: "3 Start" },
-  { title: "4 Start" },
-  { title: "5 Start" },
-];
-const Filters = () => {
-  const [category, setCategory] = useState({ title: "category" });
-  const [year, setYear] = useState(YearData[0]);
-  const [times, setTimes] = useState(TimesData[0]);
-  const [rates, setRates] = useState(RatesData[0]);
+const Filters = (props) => {
+  const {
+    categories,
+    category,
+    setCategory,
+    language,
+    setLanguage,
+    year,
+    setYear,
+    time,
+    setTimes,
+    rate,
+    setRate,
+  } = props?.data;
 
   const Filter = [
     {
       value: category,
       onChange: setCategory,
-      items: CategoriesData,
+      items:
+        categories?.length > 0
+          ? [{ title: "All categories" }, ...categories]
+          : [{ title: "No category found" }],
+    },
+    {
+      value: language,
+      onChange: setLanguage,
+      items: LanguageData,
     },
     {
       value: year,
@@ -46,18 +44,19 @@ const Filters = () => {
       items: YearData,
     },
     {
-      value: times,
+      value: time,
       onChange: setTimes,
       items: TimesData,
     },
     {
-      value: rates,
-      onChange: setRates,
+      value: rate,
+      onChange: setRate,
       items: RatesData,
     },
   ];
+
   return (
-    <div className="my-6 p-6 bg-dry  text-dryGray border-gray-800 grid md:grid-cols-4 grid-cols-2 lg:gap-12 gap-2 rounded">
+    <div className="my-6 p-6 bg-dry  text-dryGray border-gray-800 grid md:grid-cols-5 grid-cols-2 lg:gap-12 gap-2 rounded">
       {Filter.map((item, index) => (
         <Listbox key={index} value={item.value} onChange={item.onChange}>
           <div className="relative">
