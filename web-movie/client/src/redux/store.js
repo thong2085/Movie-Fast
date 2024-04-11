@@ -22,6 +22,9 @@ const rootReducer = combineReducers({
   categoryDelete: Categories.deleteCategoryReducer,
   // movies reducers
   getAllMovies: Movies.getAllMoviesReducer,
+  moviesDetails: Movies.movieDetailsReducer,
+  randomMovies: Movies.getRandomMoviesReducer,
+  topRatedMovies: Movies.getTopRatedMoviesReducer,
 });
 
 // get userInfo from local storage
