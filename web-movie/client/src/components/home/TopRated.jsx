@@ -3,13 +3,65 @@ import Titles from "../Titles";
 import { BsBookmarkStarFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { Movies } from "../../data/MovieData";
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Rating from "../Stars";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Empty } from "../notfications/Empty";
+import Loader from "../notfications/Loader";
 
-const TopRated = () => {
+const SwipperTop = ({ nextEl, prevEl, movies }) => {
+  return (
+    <Swiper
+      navigation={{ nextEl, prevEl }}
+      slidesPerView={4}
+      autoplay={true}
+      speed={1000}
+      loop={true}
+      modules={[Navigation, Autoplay]}
+      breakpoints={{
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      }}
+    >
+      {movies.map((movie, index) => (
+        <SwiperSlide key={index}>
+          <div className="p-4 border-2 border-border hovered w-full h-rate bg-dry rounded-lg overflow-hidden">
+            <img
+              src={`/images/movies/${movie?.titleImage}`}
+              alt={movie.name}
+              className="w-full h-full object-cover rounded-lg "
+            />
+            <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-50 top-0 left-0 right-0 bottom-0">
+              <button className="w-12 h-12 flex-colo transitions hover:bg-subMain rounded-full bg-slate-100 bg-opacity-30 text-white">
+                <AiFillHeart />
+              </button>
+              <Link to={`/movie/${movie?._id}`}>{movie?.name}</Link>
+              <div className="flex gap-2 text-star">
+                <Rating value={movie?.rate} />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
+const TopRated = ({ isLoading, movies }) => {
   const [nextEl, setNextEl] = useState(null);
   const [prevEl, setPrevEl] = useState(null);
   const classNames =
@@ -18,53 +70,13 @@ const TopRated = () => {
     <div className="my-16">
       <Titles title="Top Rated" Icon={BsBookmarkStarFill} />
       <div className="mt-10">
-        <Swiper
-          navigation={{ nextEl, prevEl }}
-          slidesPerView={4}
-          autoplay={true}
-          speed={1000}
-          loop={true}
-          modules={[Navigation, Autoplay]}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-          }}
-        >
-          {Movies.map((movie, index) => (
-            <SwiperSlide key={index}>
-              <div className="hovered w-full h-rate boder-border bg-dry rounded-lg overflow-hidden">
-                <img
-                  src={`/images/movies/${movie.titleImage}`}
-                  alt={movie.name}
-                  className="w-full h-full object-cover rounded-lg "
-                />
-                <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-50 top-0 left-0 right-0 bottom-0">
-                  <button className="w-12 h-12 flex-colo transitions hover:bg-subMain rounded-full bg-slate-100 bg-opacity-30 text-white">
-                    <AiFillHeart />
-                  </button>
-                  <Link to={`/movie/${movie.name}`}>{movie.name}</Link>
-                  <div className="flex gap-2 text-star">
-                    <Rating value={movie.rate} />
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {isLoading ? (
+          <Loader />
+        ) : movies?.length > 0 ? (
+          <SwipperTop nextEl={nextEl} prevEl={prevEl} movies={movies} />
+        ) : (
+          <Empty message="It seem's like we don't have any movie" />
+        )}
         <div className="w-full px-1 flex-rows gap-6 pt-12">
           <button className={classNames} ref={(node) => setPrevEl(node)}>
             <FaChevronLeft />
