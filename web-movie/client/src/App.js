@@ -45,7 +45,7 @@ const App = () => {
       dispatch(getFavoriteMoviesAction());
     }
     if (isError || catError) {
-      toast.error("Something went wrong, please try again later.");
+      toast.error(isError || catError);
       dispatch({ type: "LIKE_MOVIE_RESET" });
     }
     if (isSuccess) {

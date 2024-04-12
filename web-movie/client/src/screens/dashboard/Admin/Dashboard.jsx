@@ -1,29 +1,74 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBar from "../SideBar";
 import { FaRegListAlt, FaUser } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
 import Table from "../../../components/Table";
-import { Movies } from "../../../data/MovieData";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import {
+  deleteMovieAction,
+  getAllMoviesAction,
+} from "../../../redux/Actions/moviesAction";
+import { getAllUsersAction } from "../../../redux/Actions/userActions";
+import { getAllCategoriesAction } from "../../../redux/Actions/categoriesAction";
+import { Empty } from "../../../components/notfications/Empty";
+import Loader from "../../../components/notfications/Loader";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const {
+    isLoading: userLoading,
+    isError: userError,
+    users,
+  } = useSelector((state) => state.adminGetAllUsers);
+
+  const {
+    isLoading: catLoading,
+    isError: catError,
+    categories,
+  } = useSelector((state) => state.categoryGetAll);
+
+  const { isLoading, isError, movies, totalMovies } = useSelector(
+    (state) => state.getAllMovies
+  );
+  const { isLoading: deleteLoading, isError: deleteError } = useSelector(
+    (state) => state.deleteMovie
+  );
+
+  const deleteMovieHandler = (id) => {
+    window.confirm("Are you sure you want to delete this movie?") &&
+      dispatch(deleteMovieAction(id));
+  };
+
+  useEffect(() => {
+    dispatch(getAllUsersAction());
+    dispatch(getAllCategoriesAction());
+    dispatch(getAllMoviesAction({}));
+    // error
+    if (isError || catError || userError || deleteError) {
+      toast.error(isError || catError || userError || deleteError);
+    }
+  }, [dispatch, isError, catError, userError, deleteError]);
+
+  // dashboard datas
   const DashboardData = [
     {
       bg: "bg-orange-600",
       icon: FaRegListAlt,
       title: "Total Movies",
-      total: 20,
+      total: isLoading ? "Loading..." : totalMovies || 0,
     },
     {
       bg: "bg-blue-600",
       icon: HiViewGridAdd,
       title: "Total Categories",
-      total: 8,
+      total: catLoading ? "Loading..." : categories?.length || 0,
     },
     {
       bg: "bg-green-600",
       icon: FaUser,
       title: "Total Users",
-      total: 134,
+      total: userLoading ? "Loading..." : users?.length || 0,
     },
   ];
   return (
@@ -48,7 +93,17 @@ const Dashboard = () => {
         ))}
       </div>
       <h3 className="text-md font-medium my-6 text-border">Recent Movies</h3>
-      <Table data={Movies.slice(0, 5)} admin={true} />
+      {isLoading || deleteLoading ? (
+        <Loader />
+      ) : movies.length > 0 ? (
+        <Table
+          data={movies?.slice(0, 5)}
+          onDeleteHandler={deleteMovieHandler}
+          admin={true}
+        />
+      ) : (
+        <Empty message="Empty" />
+      )}
     </SideBar>
   );
 };

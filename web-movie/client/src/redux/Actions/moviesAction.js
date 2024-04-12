@@ -101,3 +101,37 @@ export const createReviewAction =
       ErrorsAction(error, dispatch, MoviesConstants.CREATE_REVIEW_FAIL);
     }
   };
+
+// delete movie action
+export const deleteMovieAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: MoviesConstants.DELETE_MOVIE_REQUEST });
+    const response = await MoviesAPIs.deleteMovieService(
+      tokenProtection(getState),
+      id
+    );
+    dispatch({ type: MoviesConstants.DELETE_MOVIE_SUCCESS, payload: response });
+    toast.success("Movie deleted successfully");
+    dispatch(getAllMoviesAction({}));
+  } catch (error) {
+    ErrorsAction(error, dispatch, MoviesConstants.DELETE_MOVIE_FAIL);
+  }
+};
+
+// delete all movies action
+export const deleteAllMoviesAction = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: MoviesConstants.DELETE_ALL_MOVIES_REQUEST });
+    const response = await MoviesAPIs.deleteAllMoviesService(
+      tokenProtection(getState)
+    );
+    dispatch({
+      type: MoviesConstants.DELETE_ALL_MOVIES_SUCCESS,
+      payload: response,
+    });
+    toast.success("All movies deleted successfully");
+    dispatch(getAllMoviesAction({}));
+  } catch (error) {
+    ErrorsAction(error, dispatch, MoviesConstants.DELETE_ALL_MOVIES_FAIL);
+  }
+};
