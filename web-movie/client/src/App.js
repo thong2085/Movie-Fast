@@ -25,17 +25,33 @@ import {
   AdminProtectedRouter,
   ProtectedRouter,
 } from "./routes/ProtectedRouter";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "./redux/Actions/categoriesAction";
 import { getAllMoviesAction } from "./redux/Actions/moviesAction";
+import { getFavoriteMoviesAction } from "./redux/Actions/userActions";
+import toast from "react-hot-toast";
 
 const App = () => {
   Aos.init();
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { isError, isSuccess } = useSelector((state) => state.userLikeMovie);
+  const { isError: catError } = useSelector((state) => state.categoryGetAll);
+
   useEffect(() => {
     dispatch(getAllCategoriesAction());
     dispatch(getAllMoviesAction({}));
-  }, [dispatch]);
+    if (userInfo) {
+      dispatch(getFavoriteMoviesAction());
+    }
+    if (isError || catError) {
+      toast.error("Something went wrong, please try again later.");
+      dispatch({ type: "LIKE_MOVIE_RESET" });
+    }
+    if (isSuccess) {
+      dispatch({ type: "LIKE_MOVIE_RESET" });
+    }
+  }, [dispatch, userInfo, isError, catError, isSuccess]);
   return (
     <>
       <ToastContainer />

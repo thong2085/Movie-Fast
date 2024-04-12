@@ -4,11 +4,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import FlexMovieItems from "../FlexMovieItem";
 import { Link } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
 import { RiMovie2Line } from "react-icons/ri";
 
 import Loader from "../notfications/Loader";
+import { IfMovieLiked, LikeMovie } from "../../context/Functionalities";
 
 const Swipper = ({ sameClass, movies }) => {
+  const { isLoading } = useSelector((state) => state.userGetFavoriteMovies);
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  // if liked function
+  const isLiked = (movie) => {
+    return IfMovieLiked(movie);
+  };
   return (
     <Swiper
       className={sameClass}
@@ -40,7 +50,15 @@ const Swipper = ({ sameClass, movies }) => {
               >
                 Watch
               </Link>
-              <button className="bg-dry  transitions text-white px-4 py-3 rounded text-sm  bg-opacity-30">
+              <button
+                onClick={() => LikeMovie(movie, dispatch, userInfo)}
+                disabled={isLiked(movie) || isLoading}
+                className={`bg-slate-600 ${
+                  isLiked(movie) ? "text-subMain" : "text-white"
+                }
+                hover:text-subMain transitions px-4 py-3 rounded text-sm
+                `}
+              >
                 <AiFillHeart className="hover:text-subMain w-4 h-4" />
               </button>
             </div>

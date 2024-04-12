@@ -76,6 +76,16 @@ const deleteFavoritesMoviesService = async (token) => {
   return data;
 };
 
+// like movie API call
+const likeMovieService = async (movieId, token) => {
+  const { data } = await Axios.post(`/users/favorites`, movieId, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
 // *************** ADMIN APIs ***************
 
 // admin get all users
@@ -105,4 +115,5 @@ export {
   deleteFavoritesMoviesService,
   getAllUsersService,
   deleteUserService,
+  likeMovieService,
 };

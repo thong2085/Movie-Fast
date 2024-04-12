@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
-import { FaCloud, FaHeart, FaPlay } from "react-icons/fa";
+import { FaCloud, FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieByIdAction } from "../redux/Actions/moviesAction";
 import Loader from "../components/notfications/Loader";
+import { IfMovieLiked, LikeMovie } from "../context/Functionalities";
+import { AiFillHeart } from "react-icons/ai";
 
 const WatchPage = () => {
   const { id } = useParams();
@@ -15,6 +17,15 @@ const WatchPage = () => {
   const { isLoading, isError, movie } = useSelector(
     (state) => state.moviesDetails
   );
+  const { isLoading: likeLoading } = useSelector(
+    (state) => state.userGetFavoriteMovies
+  );
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  // if liked function
+  const isLiked = (movie) => {
+    return IfMovieLiked(movie);
+  };
 
   useEffect(() => {
     // movie ID
@@ -33,8 +44,16 @@ const WatchPage = () => {
               <BiArrowBack /> {movie?.name}
             </Link>
             <div className="flex-btn sm:w-auto w-full gap-5">
-              <button className="bg-dryGray hover:text-subMain transitions bg-opacity-30 rounded px-4 py-3 text-sm">
-                <FaHeart />
+              <button
+                onClick={() => LikeMovie(movie, dispatch, userInfo)}
+                disabled={isLiked(movie) || likeLoading}
+                className={`bg-slate-600 ${
+                  isLiked(movie) ? "text-subMain" : "text-white"
+                }
+                hover:text-subMain transitions px-4 py-3 rounded text-sm
+                `}
+              >
+                <AiFillHeart className="hover:text-subMain w-4 h-4" />
               </button>
               <button className="bg-subMain flex-rows gap-2 hover:text-main transitions px-8 font-medium rounded py-3 text-sm">
                 <FaCloud /> Download
