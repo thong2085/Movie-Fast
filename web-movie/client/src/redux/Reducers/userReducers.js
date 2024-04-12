@@ -123,6 +123,22 @@ export const deleteFavoriteMoviesReducer = (state = {}, action) => {
   }
 };
 
+// USER LIKE MOVIE
+export const userLikeMovieReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userContants.LIKE_MOVIE_REQUEST:
+      return { isLoading: true };
+    case userContants.LIKE_MOVIE_SUCCESS:
+      return { isLoading: false, isSuccess: true };
+    case userContants.LIKE_MOVIE_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case userContants.LIKE_MOVIE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
 // GET ALL USERS
 export const getAllUsersReducer = (state = { users: [] }, action) => {
   switch (action.type) {

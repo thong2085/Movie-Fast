@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
   userChangePassword: User.changePasswordReducer,
   userGetFavoriteMovies: User.getFavoriteMoviesReducer,
   userDeleteFavoriteMovies: User.deleteFavoriteMoviesReducer,
+  userLikeMovie: User.userLikeMovieReducer,
   // admin reducers
   adminGetAllUsers: User.getAllUsersReducer,
   adminDeleteUser: User.deleteUserReducer,

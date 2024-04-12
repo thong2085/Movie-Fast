@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { FaHeart, FaSearch } from "react-icons/fa";
 import { CgUser } from "react-icons/cg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getFavoriteMoviesAction } from "../../redux/Actions/userActions";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { likedMovies } = useSelector((state) => state.userGetFavoriteMovies);
+
   const hover = "hover:text-subMain transitions";
   const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
 
@@ -21,6 +25,9 @@ const Navbar = () => {
       navigate("/movies");
     }
   };
+  useEffect(() => {
+    dispatch(getFavoriteMoviesAction());
+  }, [dispatch]);
 
   return (
     <>
@@ -93,7 +100,7 @@ const Navbar = () => {
             <NavLink to="/favorites" className={`${Hover} relative`}>
               <FaHeart className="w-6 h-6" />
               <div className="w-5 h-5 flex-colo rounden-full text-xs bg-subMain text-white absolute -top-5 -right-5">
-                3
+                {likedMovies?.length}
               </div>
             </NavLink>
           </div>

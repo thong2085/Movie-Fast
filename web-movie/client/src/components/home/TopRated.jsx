@@ -9,8 +9,18 @@ import Rating from "../Stars";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Empty } from "../notfications/Empty";
 import Loader from "../notfications/Loader";
+import { useSelector, useDispatch } from "react-redux";
+import { IfMovieLiked, LikeMovie } from "../../context/Functionalities";
 
 const SwipperTop = ({ nextEl, prevEl, movies }) => {
+  const { isLoading } = useSelector((state) => state.userGetFavoriteMovies);
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+
+  // if liked function
+  const isLiked = (movie) => {
+    return IfMovieLiked(movie);
+  };
   return (
     <Swiper
       navigation={{ nextEl, prevEl }}
@@ -47,7 +57,17 @@ const SwipperTop = ({ nextEl, prevEl, movies }) => {
               className="w-full h-full object-cover rounded-lg "
             />
             <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-50 top-0 left-0 right-0 bottom-0">
-              <button className="w-12 h-12 flex-colo transitions hover:bg-subMain rounded-full bg-slate-100 bg-opacity-30 text-white">
+              <button
+                onClick={() => LikeMovie(movie, dispatch, userInfo)}
+                disabled={isLiked(movie) || isLoading}
+                className={`
+              ${
+                isLiked(movie)
+                  ? "text-white bg-subMain bg-opacity-100"
+                  : "text-white"
+              }
+              w-12 h-12 flex-colo transitions hover:bg-subMain hover:text-white rounded-full bg-slate-100 bg-opacity-30 `}
+              >
                 <AiFillHeart />
               </button>
               <Link to={`/movie/${movie?._id}`}>{movie?.name}</Link>
