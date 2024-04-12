@@ -11,7 +11,6 @@ import ShareMovieModal from "../components/Modals/ShareModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieByIdAction } from "../redux/Actions/moviesAction";
 import Loader from "../components/notfications/Loader";
-import { RiMovie2Line } from "react-icons/ri";
 
 const SingleMovie = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -39,10 +38,14 @@ const SingleMovie = () => {
         </div>
       ) : isError ? (
         <div className={sameClass}>
-          <div className="flex-colo w-24 h-24 mb-4 rounded-full text-subMain text-4xl">
-            <RiMovie2Line />
+          <div className="flex-colo w-64 h-64 mb-2 rounded-full text-subMain text-4xl">
+            <img
+              src="/images/empty.png"
+              alt="empty"
+              className="text-center w-full"
+            />
           </div>
-          <p className="text-border text-sm">Something went wrong</p>
+          <p className="text-border text-sm mb-4">Something went wrong</p>
         </div>
       ) : (
         <>
