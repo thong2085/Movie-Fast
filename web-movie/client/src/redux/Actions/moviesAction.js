@@ -1,6 +1,7 @@
 import * as MoviesConstants from "../Constants/moviesConstants";
 import * as MoviesAPIs from "../APIs/MoviesServices";
-import { ErrorsAction } from "../Protection";
+import { ErrorsAction, tokenProtection } from "../Protection";
+import toast from "react-hot-toast";
 
 // get all movies action
 export const getAllMoviesAction =
@@ -77,3 +78,26 @@ export const getTopRatedMoviesAction = () => async (dispatch) => {
     ErrorsAction(error, dispatch, MoviesConstants.MOVIES_TOP_RATED_FAIL);
   }
 };
+
+// create review action
+export const createReviewAction =
+  ({ id, review }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({ type: MoviesConstants.CREATE_REVIEW_REQUEST });
+      const response = await MoviesAPIs.reviewMovieService(
+        tokenProtection(getState),
+        id,
+        review
+      );
+      dispatch({
+        type: MoviesConstants.CREATE_REVIEW_SUCCESS,
+        payload: response,
+      });
+      toast.success("Review created successfully");
+      dispatch({ type: MoviesConstants.CREATE_REVIEW_RESET });
+      dispatch(getMovieByIdAction(id));
+    } catch (error) {
+      ErrorsAction(error, dispatch, MoviesConstants.CREATE_REVIEW_FAIL);
+    }
+  };
