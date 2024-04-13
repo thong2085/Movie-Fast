@@ -9,7 +9,7 @@ const MovieInfo = ({ movie, setModalOpen }) => {
   return (
     <div className="w-full xl:h-screen relative text-white">
       <img
-        src={`/images/movies/${movie?.image}`}
+        src={movie?.image}
         alt={movie?.name}
         className="w-full h-full hidden xl:inline-block object-cover"
       />
@@ -17,7 +17,7 @@ const MovieInfo = ({ movie, setModalOpen }) => {
         <div className="container px-3 mx-auto 2xl:px-32 xl:grid grid-cols-3 flex-colo py-10 lg:py-20 gap-8">
           <div className="xl:-col-span-1 w-full xl:order-none bg-dry  border-gray-800 rounded-lg overflow-hidden">
             <img
-              src={`/images/movies/${movie?.titleImage}`}
+              src={movie?.titleImage}
               alt={movie?.name}
               className="w-full h-full object-cover"
             />

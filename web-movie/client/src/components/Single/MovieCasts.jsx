@@ -42,7 +42,7 @@ const MovieCasts = ({ movie }) => {
               <SwiperSlide key={cast?._id}>
                 <div className="w-full p-3 italic text-xs text-text rounded flex-colo bg-dry ">
                   <img
-                    src={`/images/casts/${cast?.image}`}
+                    src={cast?.image}
                     alt={cast?.name}
                     className="w-full h-64 object-cover rounded mb-4"
                   />

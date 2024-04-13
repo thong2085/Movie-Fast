@@ -37,7 +37,7 @@ const MoviesPage = () => {
   const queries = useMemo(() => {
     const query = {
       category: category?.title === "All categories" ? "" : category?.title,
-      time: time?.title === "Sort By Hours" ? "" : time?.title,
+      time: time?.title.replace(/\D/g, ""),
       language: language?.title === "Sort By Language" ? "" : language?.title,
       rate: rate?.title.replace(/\D/g, ""),
       year: year?.title.replace(/\D/g, ""),

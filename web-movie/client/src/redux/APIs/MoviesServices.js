@@ -65,3 +65,23 @@ export const deleteAllMoviesService = async (token) => {
   });
   return data;
 };
+
+// create movie API call
+export const createMovieService = async (token, movie) => {
+  const { data } = Axios.post("/movies", movie, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+// update movie API call
+export const updateMovieService = async (token, id, movie) => {
+  const { data } = Axios.put(`/movies/${id}`, movie, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
