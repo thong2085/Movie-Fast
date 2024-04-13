@@ -30,6 +30,7 @@ import { getAllCategoriesAction } from "./redux/Actions/categoriesAction";
 import { getAllMoviesAction } from "./redux/Actions/moviesAction";
 import { getFavoriteMoviesAction } from "./redux/Actions/userActions";
 import toast from "react-hot-toast";
+import EditMovie from "./screens/dashboard/Admin/EditMovie";
 
 const App = () => {
   Aos.init();
@@ -84,6 +85,7 @@ const App = () => {
               <Route path="/categories" element={<Categories />} />
               <Route path="/users" element={<Users />} />
               <Route path="/addmovie" element={<AddMovie />} />
+              <Route path="/edit/:id" element={<EditMovie />} />
             </Route>
           </Routes>
         </ScrollOnTop>

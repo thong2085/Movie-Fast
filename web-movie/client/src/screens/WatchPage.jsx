@@ -97,11 +97,7 @@ const WatchPage = () => {
                   </button>
                 </div>
                 <img
-                  src={
-                    movie?.image
-                      ? `/images/movies/${movie?.image}`
-                      : "images/user.png"
-                  }
+                  src={movie?.image ? `${movie?.image}` : "images/user.png"}
                   alt={movie?.name}
                   className="w-full h-full object-cover rounded-lg"
                 />

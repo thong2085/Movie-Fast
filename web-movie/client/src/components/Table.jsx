@@ -15,27 +15,30 @@ const Rows = (movie, i, onDeleteHandler, admin) => {
         <div className="w-12 p-1 bg-dry  h-12 rounded overflow-hidden">
           <img
             className="h-full w-full rounded-full object-cover"
-            src={`/images/movies/${movie.titleImage}`}
+            src={movie?.titleImage}
             alt={movie?.name}
           />
         </div>
       </td>
-      <td className={`${Text}`}>{movie.name}</td>
+      <td className={`${Text}`}>{movie?.name}</td>
       <td className={`${Text}`}>
-        {Array.isArray(movie.category)
+        {Array.isArray(movie?.category)
           ? movie.category.join(", ")
           : movie.category}
       </td>
 
-      <td className={`${Text}`}>{movie.language}</td>
-      <td className={`${Text}`}>{movie.year}</td>
-      <td className={`${Text}`}>{movie.time}</td>
+      <td className={`${Text}`}>{movie?.language}</td>
+      <td className={`${Text}`}>{movie?.year}</td>
+      <td className={`${Text}`}>{movie?.time}</td>
       <td className={`${Text} float-right flex-rows gap-2`}>
         {admin ? (
           <>
-            <button className="border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
+            <Link
+              to={`/edit/${movie?._id}`}
+              className="border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2"
+            >
               Edit <FaEdit className="text-green-500" />
-            </button>
+            </Link>
             <button
               onClick={() => onDeleteHandler(movie?._id)}
               className="bg-subMain text-white rounded flex-colo w-6 h-6"

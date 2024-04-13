@@ -112,3 +112,57 @@ export const deleteAllMoviesReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// CREATE MOVIE
+export const createMovieReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MoviesConstants.CREATE_MOVIE_REQUEST:
+      return { isLoading: true };
+    case MoviesConstants.CREATE_MOVIE_SUCCESS:
+      return { isLoading: false, isSuccess: true };
+    case MoviesConstants.CREATE_MOVIE_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case MoviesConstants.CREATE_MOVIE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+// UPDATE MOVIE
+export const updateMovieReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MoviesConstants.UPDATE_MOVIE_REQUEST:
+      return { isLoading: true };
+    case MoviesConstants.UPDATE_MOVIE_SUCCESS:
+      return { isLoading: false, isSuccess: true };
+    case MoviesConstants.UPDATE_MOVIE_FAIL:
+      return { isLoading: false, isError: action.payload };
+    case MoviesConstants.UPDATE_MOVIE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+// CASTS
+export const CastsReducer = (state = { casts: [] }, action) => {
+  switch (action.type) {
+    case MoviesConstants.ADD_CASTS:
+      return { casts: [...state.casts, action.payload] };
+    case MoviesConstants.EDIT_CASTS:
+      const updatedCasts = state.casts.map((cast) =>
+        cast.id === action.payload.id ? action.payload : cast
+      );
+      return { casts: updatedCasts };
+    case MoviesConstants.DELETE_CASTS:
+      return {
+        ...state,
+        casts: state.casts.filter((cast) => cast.id !== action.payload),
+      };
+    case MoviesConstants.RESEST_CASTS:
+      return { casts: [] };
+    default:
+      return state;
+  }
+};

@@ -18,7 +18,7 @@ const Movie = ({ movie }) => {
       <div className=" p-1 bg-dry border-2 border-border hover:scale-95 transitions relative rounded overflow-hidden ">
         <Link to={`/movie/${movie?._id}`} className="w-full">
           <img
-            src={`/images/movies/${movie?.image}`}
+            src={movie?.image}
             alt={movie.name}
             className="w-full h-full object-cover"
           />

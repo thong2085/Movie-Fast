@@ -143,7 +143,7 @@ const MovieRates = ({ movie }) => {
                 >
                   <div className="col-span-2  hidden md:block">
                     <img
-                      src={review?.userImage}
+                      src={review?.userImage ? review?.userImage : "user.jpg"}
                       alt={review?.userName}
                       className="w-full rounded-full object-cover"
                     />

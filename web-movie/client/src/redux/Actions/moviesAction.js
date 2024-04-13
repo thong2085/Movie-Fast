@@ -135,3 +135,63 @@ export const deleteAllMoviesAction = () => async (dispatch, getState) => {
     ErrorsAction(error, dispatch, MoviesConstants.DELETE_ALL_MOVIES_FAIL);
   }
 };
+
+// create new movie action
+export const createMovieAction = (movie) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: MoviesConstants.CREATE_MOVIE_REQUEST });
+    const response = await MoviesAPIs.createMovieService(
+      tokenProtection(getState),
+      movie
+    );
+    dispatch({ type: MoviesConstants.CREATE_MOVIE_SUCCESS, payload: response });
+    toast.success("Movie created successfully");
+    dispatch(deleteAllCastAction());
+  } catch (error) {
+    ErrorsAction(error, dispatch, MoviesConstants.CREATE_MOVIE_FAIL);
+  }
+};
+
+// update movie action
+export const updateMovieAction = (id, movie) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: MoviesConstants.UPDATE_MOVIE_REQUEST });
+    const response = await MoviesAPIs.updateMovieService(
+      tokenProtection(getState),
+      id,
+      movie
+    );
+    dispatch({ type: MoviesConstants.UPDATE_MOVIE_SUCCESS, payload: response });
+    toast.success("Movie updated successfully");
+    dispatch(getMovieByIdAction(id));
+    dispatch(deleteAllCastAction());
+  } catch (error) {
+    ErrorsAction(error, dispatch, MoviesConstants.UPDATE_MOVIE_FAIL);
+  }
+};
+
+// ************ CASTS ***********************
+
+// add cast action
+export const addCastAction = (cast) => async (dispatch, getState) => {
+  dispatch({ type: MoviesConstants.ADD_CASTS, payload: cast });
+  localStorage.setItem("casts", JSON.stringify(getState().castsMovie.casts));
+};
+
+// remove cast action
+export const removeCastAction = (id) => async (dispatch, getState) => {
+  dispatch({ type: MoviesConstants.DELETE_CASTS, payload: id });
+  localStorage.setItem("casts", JSON.stringify(getState().castsMovie.casts));
+};
+
+// update cast action
+export const updateCastAction = (cast) => async (dispatch, getState) => {
+  dispatch({ type: MoviesConstants.EDIT_CASTS, payload: cast });
+  localStorage.setItem("casts", JSON.stringify(getState().castsMovie.casts));
+};
+
+// delete all cast action
+export const deleteAllCastAction = () => async (dispatch) => {
+  dispatch({ type: MoviesConstants.RESEST_CASTS });
+  localStorage.removeItem("casts");
+};
