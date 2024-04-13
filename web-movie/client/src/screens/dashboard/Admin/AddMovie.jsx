@@ -24,7 +24,6 @@ const AddMovie = () => {
   const [cast, setCast] = useState(null);
   const [imageWithouTitle, setImageWithouTitle] = useState("");
   const [imageTitle, setImageTitle] = useState("");
-  const [videoUrl, setVideoUrl] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -53,7 +52,6 @@ const AddMovie = () => {
         ...data,
         image: imageWithouTitle,
         titleImage: imageTitle,
-        video: videoUrl,
         casts,
       })
     );
@@ -79,11 +77,11 @@ const AddMovie = () => {
         language: "",
         year: 0,
         category: "",
+        video: "",
         desc: "",
       });
       setImageTitle("");
       setImageWithouTitle("");
-      setVideoUrl("");
       dispatch({ type: "CREATE_MOVIE_RESET" });
       navigate("/addmovie");
     }
@@ -192,16 +190,16 @@ const AddMovie = () => {
         </div>
         {/* MOVIE VIDEO */}
         <div className="flex flex-col gap-2 w-full">
-          <label className="text-border font-semibold text-sm">
-            Movie Video
-          </label>
-          <div className={`w-full grid ${videoUrl && "md:grid-cols-2"} gap-6`}>
-            {videoUrl && (
-              <div className="w-full bg-main text-sm text-subMain py-4 border-2 border-border rounded flex-colo">
-                Video Uploaded!!!
-              </div>
-            )}
-            <Uploder setImageUrl={setVideoUrl} />
+          <div className="w-full">
+            <Input
+              label="YouTube Video ID"
+              placeholder="Enter YouTube Video ID"
+              type="text"
+              bg={true}
+              name="video"
+              register={{ ...register("video") }}
+            />
+            {errors.video && <InlineError text={errors.video.message} />}
           </div>
         </div>
         {/* CASTS */}
