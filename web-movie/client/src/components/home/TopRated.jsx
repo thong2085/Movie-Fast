@@ -64,9 +64,9 @@ const SwipperTop = ({ nextEl, prevEl, movies }) => {
               ${
                 isLiked(movie)
                   ? "text-white bg-subMain bg-opacity-100"
-                  : "text-white"
+                  : "text-white  bg-opacity-30 "
               }
-              w-12 h-12 flex-colo transitions hover:bg-subMain hover:text-white rounded-full bg-slate-100 bg-opacity-30 `}
+              w-12 h-12 flex-colo transitions hover:bg-subMain hover:text-white rounded-full bg-slate-100`}
               >
                 <AiFillHeart />
               </button>
