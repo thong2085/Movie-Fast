@@ -1,3 +1,5 @@
+import * as MoviesConstants from "../Constants/moviesConstants";
+import * as CategoriesConstants from "../Constants/categoriesConstants";
 import * as userConstants from "../Constants/userConstants";
 import * as userApi from "../APIs/UserServices";
 import toast from "react-hot-toast";
@@ -32,6 +34,22 @@ const logoutAction = () => async (dispatch) => {
   dispatch({ type: userConstants.USER_LOGOUT });
   dispatch({ type: userConstants.USER_LOGIN_RESET });
   dispatch({ type: userConstants.USER_REGISTER_RESET });
+  dispatch({ type: userConstants.DELETE_FAVORITE_MOVIES_RESET });
+  dispatch({ type: userConstants.USER_UPDATE_PROFILE_RESET });
+  dispatch({ type: userConstants.USER_CHANGE_PASSWORD_RESET });
+  dispatch({ type: userConstants.USER_DELETE_PROFILE_RESET });
+  dispatch({ type: userConstants.GET_ALL_USERS_RESET });
+  dispatch({ type: userConstants.GET_FAVORITE_MOVIES_RESET });
+  dispatch({ type: userConstants.DELETE_USER_RESET });
+  dispatch({ type: userConstants.LIKE_MOVIE_RESET });
+  dispatch({ type: MoviesConstants.CREATE_MOVIE_RESET });
+  dispatch({ type: MoviesConstants.CREATE_REVIEW_RESET });
+  dispatch({ type: MoviesConstants.MOVIES_DETAILS_RESET });
+  dispatch({ type: MoviesConstants.RESEST_CASTS });
+  dispatch({ type: MoviesConstants.UPDATE_MOVIE_RESET });
+  dispatch({ type: CategoriesConstants.CREATE_CATEGORIES_RESET });
+  dispatch({ type: CategoriesConstants.DELETE_CATEGORIES_RESET });
+  dispatch({ type: CategoriesConstants.UPDATE_CATEGORIES_RESET });
 };
 
 // update profile action
