@@ -64,9 +64,16 @@ const WatchPage = () => {
 
         {/* watch video*/}
         {play ? (
-          <video controls autoPlay={play} className="w-full h-full  rounded">
-            <source src={movie?.video} type="video/mp4" title={movie?.name} />
-          </video>
+          <div className="w-full h-full">
+            <iframe
+              width="100%"
+              height="815"
+              src={`https://www.youtube.com/embed/${movie?.video}`}
+              title={movie?.name}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         ) : (
           <div className="w-full h-screen rounded-lg overflow-hidden relative">
             {isLoading ? (

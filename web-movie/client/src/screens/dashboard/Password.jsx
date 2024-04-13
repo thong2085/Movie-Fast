@@ -12,7 +12,6 @@ import { changePasswordAction } from "../../redux/Actions/userActions";
 
 const Password = () => {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.userChangePassword);
   const { isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.userChangePassword
   );
